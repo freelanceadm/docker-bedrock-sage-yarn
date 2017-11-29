@@ -1,0 +1,31 @@
+version: '2'
+services:
+  web:
+    restart: always
+    mem_limit: 256m
+    image: 'httpd-composer-bedrock-sage'
+    build: 'composerbedrocksage'
+    ports:
+        - 80
+        - 443
+    volumes:
+        - /etc/localtime:/etc/localtime:ro
+        - ./.env:/root/.env
+        - ./themes:/var/www/html/web/app/themes
+    links:
+        - mariadb
+
+  mariadb:
+    image: mariadb:10.1
+    restart: always
+    mem_limit: 512m
+    expose:
+        - 3306
+    volumes:
+        - ./mysql:/var/lib/mysql
+    environment:
+        MYSQL_DATABASE: "${DB_NAME}"
+        MYSQL_USER: "${DB_USER}"
+        MYSQL_PASSWORD: "${DB_PASSWORD}"
+        MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+
