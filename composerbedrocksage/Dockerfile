@@ -4,7 +4,8 @@ RUN apt-get update && \
 	apt-get install -y --no-install-recommends \
 		wget \
 		git \
-		zip unzip \
+		zip unzip && \
+        docker-php-ext-install mysqli \
 	&& rm -rf /var/lib/apt/lists/*
 
 # install composer
@@ -19,8 +20,11 @@ RUN cd /tmp && \
 	mv wp-cli.phar /usr/bin/wp
 
 # install bedrock
-RUN /usr/bin/composer create-project roots/bedrock /var/www/html && \
-	sed -i -e 's/\/var\/www\/html$/\/var\/www\/html\/web$/' \
-		/etc/apache2/sites-enabled/000-default.conf
+RUN /usr/bin/composer create-project roots/bedrock /var/www/html
+
+# add default vhost config for apache
+COPY 000-default.conf /etc/apache2/sites-enabled
+
+# add main startup script to container
 COPY start.sh /root/start.sh
 CMD ["/root/start.sh"]

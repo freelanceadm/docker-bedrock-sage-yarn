@@ -6,8 +6,8 @@ services:
     image: 'httpd-composer-bedrock-sage'
     build: 'composerbedrocksage'
     ports:
-        - 80
-        - 443
+        - 80:80
+        - 443:443
     volumes:
         - /etc/localtime:/etc/localtime:ro
         - ./.env:/root/.env

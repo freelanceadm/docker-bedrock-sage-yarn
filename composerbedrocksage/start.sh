@@ -6,9 +6,7 @@ envfile='/root/.env'
 ###### functions ##################
 function install_bedrock(){
 # install bedrock
-RUN /usr/bin/composer create-project roots/bedrock ${projectdir} && \
-	sed -i -e 's/\/var\/www\/html$/\/var\/www\/html\/web$/' \
-		/etc/apache2/sites-enabled/000-default.conf
+    /usr/bin/composer create-project roots/bedrock ${projectdir}
 }
 ###################################
 
