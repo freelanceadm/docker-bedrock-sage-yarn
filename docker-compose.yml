@@ -11,7 +11,7 @@ services:
     volumes:
         - /etc/localtime:/etc/localtime:ro
         - ./.env:/root/.env
-        - ./themes:/var/www/html/web/app/themes
+        - ./www:/var/www/html
     links:
         - mariadb
     environment:
