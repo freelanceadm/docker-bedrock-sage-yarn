@@ -23,7 +23,7 @@ RUN cd /tmp && \
 RUN /usr/bin/composer create-project roots/bedrock /var/www/html
 
 # add default vhost config for apache
-COPY 000-default.conf /etc/apache2/sites-enabled
+COPY 000-default.conf /etc/apache2/sites-available
 
 # add main startup script to container
 COPY start.sh /root/start.sh

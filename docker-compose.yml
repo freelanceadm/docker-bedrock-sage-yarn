@@ -14,6 +14,10 @@ services:
         - ./themes:/var/www/html/web/app/themes
     links:
         - mariadb
+    environment:
+      SAGE_INSTALL: "${SAGE_INSTALL}"
+      SAGE_VERSION: "${SAGE_VERSION}"
+      SAGE_THEME_NAME: "${SAGE_THEME_NAME}"
 
   mariadb:
     image: mariadb:10.1
