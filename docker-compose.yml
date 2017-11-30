@@ -19,6 +19,14 @@ services:
       SAGE_VERSION: "${SAGE_VERSION}"
       SAGE_THEME_NAME: "${SAGE_THEME_NAME}"
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    mem_limit: 256m
+    ports:
+      - 8080:80
+    links:
+      - mariadb:db
+
   mariadb:
     image: mariadb:10.1
     restart: always

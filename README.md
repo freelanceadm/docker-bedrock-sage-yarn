@@ -3,15 +3,18 @@
     Theis docker-compose LAMP stack with Bedrock and Sage inside.
 
 ### Whats inside this stack
-    web container:
+#### Web container:
         Based on official php:7.0-apache image.
 	Composer
 	Wp-cli
 	Bedrock
 	Sage theme generator
 
-   database container:
-	Mariadb 10.1 official image
+#### Database container:
+	Mariadb 10.1 official image.
+
+#### Phpmyadmin container:
+        Phpmyadmin/phpmyadmin official image.
 
 ### Configure
     I use .env file in working directory.
@@ -30,6 +33,12 @@ DB_PASSWORD=dbpass
 
     This is optional ( its db container name but you can use your own db server):
 DB_HOST=mariadb
+
+##### 2.1 Connect to Mysql using Phpmyadmin
+    Phpmyadmin will listen on your server on port 8080,
+so if you want to simply use this url:
+    http://you-server-ip-dns-name:8080
+    And login with credentials you set in .env file.
 
 #### 3 Set environment. By default development.
 WP_ENV=development
