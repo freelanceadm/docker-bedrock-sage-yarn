@@ -10,6 +10,10 @@ function install_bedrock(){
 echo "Bedrock installed..."
 }
 ###################################
+# if there is no projectdir create it
+if [ ! -d ${projectdir}  ]; then
+    mkdir -p ${projectdir}
+fi
 
 # check if directory /var/www/html is empty then install bedrock
 [[ $(ls -1 ${projectdir} | wc -l ) -gt 0 ]] || install_bedrock
